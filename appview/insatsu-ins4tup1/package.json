@@ -1,0 +1,10 @@
+{
+  "name": "insatsu-ins4tup1",
+  "version": "1.0.0",
+  "description": "insatsu.etzhayyim.com - Global cloud print and mail orchestration",
+  "main": "src/app.ts",
+  "type": "module",
+  "dependencies": {
+    "@etzhayyim/kotodama-host-sdk": "workspace:*"
+  }
+}
