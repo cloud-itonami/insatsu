@@ -1,0 +1,98 @@
+{
+  "@context": "https://etzhayyim.com/ns/actor/v1",
+  "@id": "did:web:insatsu.etzhayyim.com",
+  "name": "insatsu",
+  "nanoid": "ins4tup1",
+  "displayName": "Insatsu - Global Cloud Print & Mail Network",
+  "description": "Global cloud print and postal orchestration actor. Routes jobs to individual regional print shops, applies print/mail preflight, and hands off domestic Japan mail to yuubin.etzhayyim.com when appropriate.",
+  "runtime": "k8s-langserver",
+  "edge": "sveltekit-proxy",
+  "legacyExecutionTier": "T1",
+  "performerType": "service",
+  "uiType": "appview",
+  "heartbeatRequired": true,
+  "domainKnowledgeRequired": true,
+  "actors": [
+    {
+      "displayName": "Network Broker",
+      "path": "network:broker",
+      "description": "Global print-routing broker DID for quote, dispatch, and partner selection."
+    },
+    {
+      "displayName": "Print Partner",
+      "path": "partner",
+      "description": "Per-print-shop path namespace for local print providers and managed lanes."
+    },
+    {
+      "displayName": "Postal Lane Router",
+      "path": "lane:postal",
+      "description": "Postal handoff routing DID for carrier selection and mail-class normalization."
+    },
+    {
+      "displayName": "Hybrid Mail Router",
+      "path": "lane:hybrid",
+      "description": "Hybrid mail DID for print-near-destination and last-mile post injection."
+    }
+  ],
+  "capabilities": [
+    "graph.query",
+    "graph.write",
+    "agent.invoke",
+    "derive:social"
+  ],
+  "convoSystemPrompt": "You are Insatsu, a global cloud print and mail orchestration actor. You route document print jobs to local print shops, select postal injection lanes, validate print/mail constraints, and hand off Japan domestic postal fulfillment to yuubin.etzhayyim.com when available. Prefer nearest-capable shop, predictable SLA, and compliance-safe handling of address and document metadata.",
+  "profile": {
+    "agentType": "autonomous",
+    "isBot": true,
+    "operator": "etzhayyim.co.jp",
+    "displayName": "Insatsu",
+    "description": "Cloud print and postal orchestration across regional print shops and postal lanes.",
+    "capabilities": [
+      "register-print-partner",
+      "list-print-partners",
+      "quote-print-mail-job",
+      "create-print-mail-job",
+      "get-print-mail-job"
+    ]
+  },
+  "governance": {
+    "classification": "confidential",
+    "raci": "responsible",
+    "complianceFrameworks": [
+      "postal-operator-privacy",
+      "document-production-chain-of-custody",
+      "cross-border-data-minimization"
+    ]
+  },
+  "entities": [
+    {
+      "category": "downstream",
+      "did": "did:web:yuubin.etzhayyim.com",
+      "name": "YUUBIN Gateway",
+      "sourceId": "yuubin-japan-post",
+      "url": "https://yuubin.etzhayyim.com/",
+      "role": "japan-domestic-postal-handoff",
+      "note": "Used when destination country is JPN and the selected route is compatible with Web ゆうびん / Japan Post automation."
+    }
+  ],
+  "triggers": {
+    "subscribeRepos": {
+      "collections": [
+        "com.etzhayyim.apps.insatsu.printPartner",
+        "com.etzhayyim.apps.insatsu.printMailJob"
+      ]
+    }
+  },
+  "requiredCollections": [
+    "com.etzhayyim.apps.standard.shinkaEvolution"
+  ],
+  "requiredLoops": [
+    "shinka"
+  ],
+  "standardRule": "per-did-kyumei-shinka-autonomy@2026-04-13",
+  "standardStatus": "required",
+  "complianceDocs": [
+    "90-docs/rules/compliance/per-did-kyumei-shinka-autonomy.md",
+    "90-docs/adr/0062-insatsu-cloud-print-mail-network.md"
+  ]
+}
