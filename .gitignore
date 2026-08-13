@@ -1,0 +1,6 @@
+# The quickstart builds node_modules by hand, because npm install cannot run
+# here (docs/operator-quickstart.md §3-4). Keep 45 copied packages out of
+# git status so the extraction stays legible.
+node_modules/
+package-lock.json
+pnpm-lock.yaml
