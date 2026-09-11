@@ -10,7 +10,7 @@ tests — but neither `npm install` nor `pnpm install` completes in either unit,
 the declared runtime dependency of the appview no longer exists anywhere, and
 the actor DID does not resolve in DNS. None of that is visible from reading the
 source, which looks fine. It has to be measured:
-**`nbb docs/check-declared.cljs`** ([quickstart](docs/operator-quickstart.md)).
+**`nbb docs/check-declared.cljk`** ([quickstart](docs/operator-quickstart.md)).
 
 **The identity is not here.** `did:web:insatsu.etzhayyim.com` and the actor
 manifest belong to the sibling repo `cloud-itonami/insatsu-actor`; a copy of
@@ -66,7 +66,7 @@ are reached through a consent capability.
 
 ## Status — measured 2026-08-14
 
-Do not trust this table. Re-take it: **`nbb docs/check-declared.cljs`**. Every
+Do not trust this table. Re-take it: **`nbb docs/check-declared.cljk`**. Every
 line below is that program's output, on tip `94f880e`.
 
 ### The install path is dead in three independent places
