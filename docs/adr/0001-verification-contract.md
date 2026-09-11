@@ -33,7 +33,7 @@ is broken.
 
 ## Decision
 
-**1. The verification contract for this repo is `nbb docs/check-declared.cljk`
+**1. The verification contract for this repo is `kbb --backend sci docs/check-declared.cljk`
 plus the two vitest suites, run per `docs/operator-quickstart.md`.** Neither
 alone is sufficient. The suites pin behaviour (money as decimal strings, the
 cross-layer foreign key from sealed job to plaintext partner, read-capability
