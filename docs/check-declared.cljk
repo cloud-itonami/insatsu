@@ -1,7 +1,7 @@
 #!/usr/bin/env nbb
-;; docs/check-declared.cljs — can what this repo declares actually be obtained?
+;; docs/check-declared.cljk — can what this repo declares actually be obtained?
 ;;
-;;   nbb docs/check-declared.cljs           # from the repo root
+;;   nbb docs/check-declared.cljk           # from the repo root
 ;;
 ;; The code in this repo works: two vitest suites pass (see
 ;; docs/operator-quickstart.md). What does not work is *getting to* it. The

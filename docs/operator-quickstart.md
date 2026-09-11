@@ -15,7 +15,7 @@ came back.
 From the repo root:
 
 ```bash
-nbb docs/check-declared.cljs
+nbb docs/check-declared.cljk
 ```
 
 You need [nbb](https://github.com/babashka/nbb) (`npm i -g nbb`), DNS, and
@@ -156,7 +156,7 @@ meanwhile.
 
 ## 5. If you change anything
 
-`docs/check-declared.cljs` is the regression check for the README, and nothing
+`docs/check-declared.cljk` is the regression check for the README, and nothing
 in it is hardcoded: add a dependency, a `workspace:` sibling, or an
 `*.etzhayyim.com` host and it comes under the check by itself.
 
